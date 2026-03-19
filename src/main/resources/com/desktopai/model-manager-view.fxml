@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      xmlns="http://javafx.com/javafx/17"
+      fx:controller="com.desktopai.controller.ModelManagerController"
+      spacing="0">
+
+    <!-- Header -->
+    <HBox styleClass="view-header" spacing="10" alignment="CENTER_LEFT">
+        <padding>
+            <Insets top="10" right="15" bottom="10" left="15"/>
+        </padding>
+
+        <Label text="Model Manager" styleClass="title-2"/>
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Button fx:id="refreshBtn" text="Refresh" styleClass="flat" onAction="#refreshModels">
+            <graphic><FontIcon iconLiteral="mdmz-refresh" iconSize="14"/></graphic>
+        </Button>
+    </HBox>
+
+    <!-- Installed Models -->
+    <VBox VBox.vgrow="ALWAYS">
+        <padding>
+            <Insets top="10" right="15" bottom="10" left="15"/>
+        </padding>
+
+        <Label text="Installed Models" styleClass="title-4"/>
+
+        <ScrollPane VBox.vgrow="ALWAYS" styleClass="model-scroll" fitToWidth="true">
+            <VBox fx:id="installedModelsList" spacing="8">
+                <padding>
+                    <Insets top="10" right="5" bottom="10" left="5"/>
+                </padding>
+            </VBox>
+        </ScrollPane>
+    </VBox>
+
+    <!-- Ollama Download -->
+    <VBox styleClass="download-section">
+        <padding>
+            <Insets top="10" right="15" bottom="12" left="15"/>
+        </padding>
+
+        <Label text="Download via Ollama" styleClass="title-4"/>
+
+        <HBox spacing="8" alignment="CENTER_LEFT">
+            <TextField fx:id="modelNameField" promptText="Search Ollama library or type a model name..."
+                       HBox.hgrow="ALWAYS"/>
+            <Button fx:id="downloadBtn" text="Pull" styleClass="accent" onAction="#downloadModel">
+                <graphic><FontIcon iconLiteral="mdal-get_app" iconSize="14"/></graphic>
+            </Button>
+        </HBox>
+
+        <HBox fx:id="downloadProgressBar" spacing="8" alignment="CENTER_LEFT"
+              visible="false" managed="false">
+            <padding><Insets top="6"/></padding>
+            <ProgressIndicator fx:id="downloadIndicator" prefWidth="18" prefHeight="18"/>
+            <Label fx:id="downloadStatus" text="Downloading..."/>
+        </HBox>
+
+        <Label text="Type to search the Ollama library, or enter a name directly (e.g. llama3.2:3b)"
+               styleClass="text-subtle"/>
+    </VBox>
+
+    <!-- HuggingFace Download -->
+    <VBox styleClass="download-section">
+        <padding>
+            <Insets top="10" right="15" bottom="14" left="15"/>
+        </padding>
+
+        <Label text="Download GGUF from HuggingFace" styleClass="title-4"/>
+
+        <TextField fx:id="hfSearchField"
+                   promptText="Type to search models (llama, mistral, phi...)"/>
+
+        <ComboBox fx:id="hfFileCombo" promptText="— select a GGUF file —"
+                  maxWidth="1.7976931348623157E308" disable="true"/>
+
+        <HBox fx:id="hfProgressBox" spacing="8" alignment="CENTER_LEFT"
+              visible="false" managed="false">
+            <padding><Insets top="6"/></padding>
+            <ProgressIndicator fx:id="hfProgressIndicator" prefWidth="18" prefHeight="18"/>
+            <Label fx:id="hfProgressLabel" text=""/>
+        </HBox>
+
+        <Button fx:id="hfDownloadBtn" styleClass="accent"
+                onAction="#downloadHuggingFaceModel" disable="true">
+            <graphic><FontIcon iconLiteral="mdal-get_app" iconSize="14"/></graphic>
+            <tooltip><Tooltip text="Download selected GGUF file"/></tooltip>
+        </Button>
+    </VBox>
+
+</VBox>

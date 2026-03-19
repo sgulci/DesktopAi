@@ -1,0 +1,37 @@
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.classpath
+.project
+.settings/
+.vscode/
+.claude/
+
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Application runtime data (user-specific, not part of source)
+*.db
+*.db-shm
+*.db-wal
+
+# Build output
+/app/

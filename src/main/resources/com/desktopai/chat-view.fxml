@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<HBox xmlns:fx="http://javafx.com/fxml/1"
+      xmlns="http://javafx.com/javafx/17"
+      fx:controller="com.desktopai.controller.ChatController"
+      spacing="0" fillHeight="true">
+
+    <!-- Chat history sidebar -->
+    <VBox styleClass="chat-sidebar" prefWidth="220" minWidth="180">
+        <HBox styleClass="sidebar-header" alignment="CENTER_LEFT">
+            <Label text="Chats" styleClass="title-4" HBox.hgrow="ALWAYS"/>
+            <Button fx:id="newChatBtn" styleClass="small, flat" onAction="#startNewChat">
+                <graphic><FontIcon iconLiteral="mdal-add_circle_outline" iconSize="16"/></graphic>
+                <tooltip><Tooltip text="New Chat"/></tooltip>
+            </Button>
+        </HBox>
+
+        <ScrollPane VBox.vgrow="ALWAYS" fitToWidth="true" styleClass="sidebar-scroll">
+            <VBox fx:id="chatHistoryList" spacing="4">
+                <padding>
+                    <Insets top="6" right="6" bottom="6" left="6"/>
+                </padding>
+            </VBox>
+        </ScrollPane>
+    </VBox>
+
+    <!-- Main chat area -->
+    <VBox HBox.hgrow="ALWAYS" spacing="0">
+
+        <!-- Header with model selector -->
+        <HBox styleClass="chat-header" spacing="10" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="10" right="15" bottom="10" left="15"/>
+            </padding>
+
+            <Label text="Chat" styleClass="title-2"/>
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <Label text="Model:"/>
+            <ComboBox fx:id="modelSelector" prefWidth="200"/>
+        </HBox>
+
+        <!-- Document context selector -->
+        <HBox fx:id="documentContextBar" styleClass="context-bar" spacing="10" alignment="CENTER_LEFT" managed="true">
+            <padding>
+                <Insets top="5" right="15" bottom="5" left="15"/>
+            </padding>
+
+            <Label text="Context:" graphicTextGap="5">
+                <graphic><FontIcon iconLiteral="mdmz-menu_book" iconSize="14"/></graphic>
+            </Label>
+            <Label fx:id="selectedDocsLabel" text="No context"/>
+            <Button fx:id="selectDocsBtn" text="Select..." styleClass="small, flat" onAction="#selectDocuments"/>
+        </HBox>
+
+        <!-- Chat messages area -->
+        <ScrollPane fx:id="chatScrollPane" VBox.vgrow="ALWAYS" styleClass="chat-scroll" fitToWidth="true">
+            <VBox fx:id="messagesContainer" spacing="10">
+                <padding>
+                    <Insets top="15" right="15" bottom="15" left="15"/>
+                </padding>
+            </VBox>
+        </ScrollPane>
+
+        <!-- Input area -->
+        <HBox styleClass="input-area" spacing="10" alignment="CENTER">
+            <padding>
+                <Insets top="10" right="15" bottom="15" left="15"/>
+            </padding>
+
+            <TextArea fx:id="inputField" promptText="Ask a question about your documents..."
+                      prefRowCount="2" wrapText="true" HBox.hgrow="ALWAYS"/>
+
+            <VBox spacing="5" alignment="CENTER">
+                <Button fx:id="sendBtn" styleClass="accent" onAction="#sendMessage"
+                        prefWidth="80" prefHeight="40">
+                    <graphic><FontIcon iconLiteral="mdmz-send" iconSize="15"/></graphic>
+                    <tooltip><Tooltip text="Send (Ctrl+Enter)"/></tooltip>
+                </Button>
+                <Button fx:id="stopBtn" styleClass="danger, flat" onAction="#stopGeneration"
+                        prefWidth="80" prefHeight="30" visible="false" managed="false">
+                    <graphic><FontIcon iconLiteral="mdmz-stop_circle" iconSize="14"/></graphic>
+                    <tooltip><Tooltip text="Stop generation"/></tooltip>
+                </Button>
+            </VBox>
+        </HBox>
+    </VBox>
+</HBox>

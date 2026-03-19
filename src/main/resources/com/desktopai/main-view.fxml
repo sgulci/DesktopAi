@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/17"
+            fx:controller="com.desktopai.controller.MainController">
+
+    <!-- Sidebar Navigation -->
+    <left>
+        <VBox styleClass="sidebar" spacing="5" prefWidth="60">
+            <padding>
+                <Insets top="12" right="7" bottom="10" left="7"/>
+            </padding>
+
+            <!-- App Logo -->
+            <StackPane styleClass="app-logo" prefWidth="46" prefHeight="46" alignment="CENTER">
+                <FontIcon iconLiteral="mdal-android" iconSize="26" styleClass="app-logo-icon"/>
+            </StackPane>
+
+            <Region VBox.vgrow="NEVER" prefHeight="16"/>
+
+            <!-- Navigation Buttons -->
+            <Button fx:id="chatNavBtn" styleClass="nav-button, nav-active"
+                    onAction="#showChat" prefWidth="46" prefHeight="46">
+                <graphic><FontIcon iconLiteral="mdal-chat" iconSize="22"/></graphic>
+                <tooltip><Tooltip text="Chat"/></tooltip>
+            </Button>
+
+            <Button fx:id="docsNavBtn" styleClass="nav-button"
+                    onAction="#showDocuments" prefWidth="46" prefHeight="46">
+                <graphic><FontIcon iconLiteral="mdal-description" iconSize="22"/></graphic>
+                <tooltip><Tooltip text="Documents"/></tooltip>
+            </Button>
+
+            <Button fx:id="modelsNavBtn" styleClass="nav-button"
+                    onAction="#showModels" prefWidth="46" prefHeight="46">
+                <graphic><FontIcon iconLiteral="mdmz-psychology" iconSize="22"/></graphic>
+                <tooltip><Tooltip text="Models"/></tooltip>
+            </Button>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Button fx:id="settingsNavBtn" styleClass="nav-button"
+                    onAction="#showSettings" prefWidth="46" prefHeight="46">
+                <graphic><FontIcon iconLiteral="mdmz-settings" iconSize="22"/></graphic>
+                <tooltip><Tooltip text="Settings"/></tooltip>
+            </Button>
+        </VBox>
+    </left>
+
+    <!-- Main Content Area -->
+    <center>
+        <StackPane fx:id="contentArea"/>
+    </center>
+
+    <!-- Status Bar -->
+    <bottom>
+        <HBox styleClass="status-bar" spacing="10" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="5" right="10" bottom="5" left="10"/>
+            </padding>
+
+            <Label fx:id="connectionStatus" text="Connected" graphicTextGap="5">
+                <graphic><FontIcon iconLiteral="mdal-fiber_manual_record" iconSize="12" styleClass="status-icon-connected"/></graphic>
+            </Label>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="currentModel" text=""/>
+        </HBox>
+    </bottom>
+</BorderPane>

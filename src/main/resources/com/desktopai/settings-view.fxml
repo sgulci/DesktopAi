@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/17"
+            fx:controller="com.desktopai.controller.SettingsController"
+            fitToWidth="true">
+
+    <VBox spacing="20">
+        <padding>
+            <Insets top="15" right="20" bottom="20" left="20"/>
+        </padding>
+
+        <!-- Header -->
+        <Label text="Settings" styleClass="title-2"/>
+
+        <!-- Appearance Section -->
+        <VBox styleClass="settings-section" spacing="10">
+            <Label text="Appearance" styleClass="title-4"/>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Dark Mode" prefWidth="150"/>
+                <CheckBox fx:id="darkModeToggle" onAction="#toggleDarkMode"/>
+            </HBox>
+        </VBox>
+
+        <!-- LLM Providers Section -->
+        <VBox styleClass="settings-section" spacing="10">
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="LLM Providers" styleClass="title-4"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button fx:id="addProviderBtn" text="+ Add Provider" styleClass="small, flat" onAction="#addProvider"/>
+            </HBox>
+
+            <VBox fx:id="providersList" spacing="10">
+                <padding>
+                    <Insets top="5" right="5" bottom="5" left="5"/>
+                </padding>
+            </VBox>
+        </VBox>
+
+        <!-- RAG Settings Section -->
+        <VBox styleClass="settings-section" spacing="10">
+            <Label text="RAG Settings" styleClass="title-4"/>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Chunk Size (chars)" prefWidth="150"/>
+                <Spinner fx:id="chunkSizeSpinner" prefWidth="100" editable="true"/>
+                <Label text="Recommended: 600-1000" styleClass="text-subtle"/>
+            </HBox>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Context Chunks" prefWidth="150"/>
+                <Spinner fx:id="contextChunksSpinner" prefWidth="100" editable="true"/>
+                <Label text="Number of chunks used for context" styleClass="text-subtle"/>
+            </HBox>
+        </VBox>
+
+        <!-- Embedding Provider Section -->
+        <VBox styleClass="settings-section" spacing="10">
+            <Label text="Embedding Provider" styleClass="title-4"/>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Provider" prefWidth="150"/>
+                <ComboBox fx:id="embeddingTypeCombo" prefWidth="200"/>
+            </HBox>
+
+            <VBox fx:id="embeddingConfigBox" spacing="8" visible="false" managed="false">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Model" prefWidth="150"/>
+                    <TextField fx:id="embeddingModelField" prefWidth="250"/>
+                </HBox>
+                <HBox fx:id="embeddingApiUrlRow" spacing="10" alignment="CENTER_LEFT">
+                    <Label text="API URL" prefWidth="150"/>
+                    <TextField fx:id="embeddingApiUrlField" prefWidth="300"/>
+                </HBox>
+                <HBox fx:id="embeddingApiKeyRow" spacing="10" alignment="CENTER_LEFT">
+                    <Label text="API Key" prefWidth="150"/>
+                    <PasswordField fx:id="embeddingApiKeyField" prefWidth="300"/>
+                </HBox>
+            </VBox>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Button fx:id="embeddingTestBtn" text="Test Connection" styleClass="small, flat" onAction="#testEmbeddingConnection"/>
+                <Label fx:id="embeddingStatus" text=""/>
+            </HBox>
+
+            <Label text="Changing provider requires re-indexing all documents." styleClass="text-subtle"/>
+        </VBox>
+
+        <!-- Local Inference Section -->
+        <VBox styleClass="settings-section" spacing="10">
+            <Label text="Local Inference" styleClass="title-4"/>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="llama.cpp Log Level" prefWidth="150"/>
+                <ComboBox fx:id="llamaLogLevelCombo" prefWidth="130"/>
+                <Label text="OFF suppresses all output" styleClass="text-subtle"/>
+            </HBox>
+        </VBox>
+
+        <!-- Ollama Settings Section -->
+        <VBox styleClass="settings-section" spacing="10">
+            <Label text="Ollama Server" styleClass="title-4"/>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Server URL" prefWidth="150"/>
+                <TextField fx:id="ollamaUrlField" promptText="http://localhost:11434" prefWidth="300"/>
+                <Button fx:id="testOllamaBtn" text="Test" styleClass="small, flat" onAction="#testOllamaConnection"/>
+                <Label fx:id="ollamaStatus" text=""/>
+            </HBox>
+        </VBox>
+
+        <!-- Data Section -->
+        <VBox styleClass="settings-section" spacing="10">
+            <Label text="Data" styleClass="title-4"/>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Database Location" prefWidth="150"/>
+                <Label fx:id="dbPathLabel" text="" styleClass="text-muted"/>
+            </HBox>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Button fx:id="clearDataBtn" text="Clear All Data" styleClass="danger" onAction="#clearAllData"/>
+                <Label text="This will delete all documents and chat history" styleClass="text-subtle"/>
+            </HBox>
+        </VBox>
+
+        <!-- Save Button -->
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <Button fx:id="saveBtn" text="Save Settings" styleClass="accent" onAction="#saveSettings"/>
+        </HBox>
+    </VBox>
+</ScrollPane>

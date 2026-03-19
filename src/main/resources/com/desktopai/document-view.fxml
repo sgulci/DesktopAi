@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      xmlns="http://javafx.com/javafx/17"
+      fx:controller="com.desktopai.controller.DocumentController"
+      spacing="0">
+
+    <!-- Header -->
+    <HBox styleClass="view-header" spacing="10" alignment="CENTER_LEFT">
+        <padding>
+            <Insets top="10" right="15" bottom="10" left="15"/>
+        </padding>
+
+        <Label text="Documents" styleClass="title-2"/>
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Button fx:id="uploadBtn" text="Upload" styleClass="accent" onAction="#uploadDocument">
+            <graphic><FontIcon iconLiteral="mdal-file_upload" iconSize="14"/></graphic>
+        </Button>
+    </HBox>
+
+    <!-- Drop zone -->
+    <VBox fx:id="dropZone" styleClass="drop-zone" alignment="CENTER" spacing="10"
+          onDragOver="#handleDragOver" onDragDropped="#handleDragDropped" onDragExited="#handleDragExited">
+        <padding>
+            <Insets top="30" right="30" bottom="30" left="30"/>
+        </padding>
+
+        <FontIcon iconLiteral="mdal-folder_open" iconSize="52" styleClass="drop-zone-icon"/>
+        <Label text="Drag and drop files here" styleClass="text-bold"/>
+        <Label text="or click 'Upload' above" styleClass="text-muted"/>
+        <Label text="Supports: PDF, DOCX, TXT, MD, HTML, RTF, ODT" styleClass="text-subtle"/>
+    </VBox>
+
+    <!-- Document list -->
+    <VBox VBox.vgrow="ALWAYS">
+        <padding>
+            <Insets top="10" right="15" bottom="15" left="15"/>
+        </padding>
+
+        <Label text="Uploaded Documents" styleClass="title-4"/>
+
+        <ScrollPane VBox.vgrow="ALWAYS" styleClass="document-scroll" fitToWidth="true">
+            <VBox fx:id="documentList" spacing="8">
+                <padding>
+                    <Insets top="10" right="5" bottom="10" left="5"/>
+                </padding>
+            </VBox>
+        </ScrollPane>
+    </VBox>
+
+    <!-- Processing status -->
+    <HBox fx:id="processingBar" styleClass="processing-bar" spacing="10" alignment="CENTER_LEFT"
+          visible="false" managed="false">
+        <padding>
+            <Insets top="10" right="15" bottom="10" left="15"/>
+        </padding>
+
+        <ProgressIndicator fx:id="progressIndicator" prefWidth="20" prefHeight="20"/>
+        <Label fx:id="processingStatus" text="Processing document..."/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="cancelProcessBtn" styleClass="small, flat" onAction="#cancelProcessing">
+            <graphic><FontIcon iconLiteral="mdal-close" iconSize="14"/></graphic>
+            <tooltip><Tooltip text="Cancel"/></tooltip>
+        </Button>
+    </HBox>
+</VBox>

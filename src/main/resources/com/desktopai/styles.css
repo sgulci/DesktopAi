@@ -1,0 +1,287 @@
+/* DesktopAI custom overrides on top of AtlantaFX Nord theme */
+
+/* ===== App Logo ===== */
+.app-logo {
+    -fx-background-color: -color-accent-emphasis;
+    -fx-background-radius: 12;
+}
+
+.app-logo-icon {
+    -fx-icon-color: white;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+    -fx-background-color: -color-bg-subtle;
+    -fx-border-color: -color-border-muted;
+    -fx-border-width: 0 1 0 0;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font-size: 20px;
+    -fx-cursor: hand;
+    -fx-padding: 10;
+}
+
+.nav-button:hover {
+    -fx-background-color: -color-bg-inset;
+}
+
+.nav-active {
+    -fx-background-color: -color-accent-emphasis;
+}
+
+.nav-active:hover {
+    -fx-background-color: -color-accent-emphasis;
+    -fx-opacity: 0.88;
+}
+
+/* Nav icon colours — grey when inactive, white when active */
+.nav-button .ikonli-font-icon {
+    -fx-icon-color: -color-fg-muted;
+}
+
+.nav-active .ikonli-font-icon {
+    -fx-icon-color: white;
+}
+
+/* ===== Status bar ===== */
+.status-bar {
+    -fx-background-color: -color-bg-subtle;
+    -fx-border-color: -color-border-muted;
+    -fx-border-width: 1 0 0 0;
+}
+
+/* ===== View headers ===== */
+.view-header,
+.chat-header {
+    -fx-background-color: -color-bg-subtle;
+    -fx-border-color: -color-border-muted;
+    -fx-border-width: 0 0 1 0;
+}
+
+/* ===== Context bar (chat) ===== */
+.context-bar {
+    -fx-background-color: -color-bg-inset;
+    -fx-border-color: -color-border-muted;
+    -fx-border-width: 0 0 1 0;
+}
+
+/* ===== Chat input area ===== */
+.input-area {
+    -fx-background-color: -color-bg-subtle;
+    -fx-border-color: -color-border-muted;
+    -fx-border-width: 1 0 0 0;
+}
+
+/* ===== Transparent scroll panes ===== */
+.chat-scroll,
+.chat-scroll > .viewport,
+.document-scroll,
+.document-scroll > .viewport,
+.model-scroll,
+.model-scroll > .viewport {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+/* ===== Message bubbles ===== */
+.message-bubble {
+    -fx-background-radius: 12;
+    -fx-padding: 10 14;
+    -fx-max-width: 620;
+}
+
+.message-user {
+    -fx-background-color: -color-accent-emphasis;
+}
+
+.message-assistant {
+    -fx-background-color: -color-bg-subtle;
+    -fx-border-color: -color-border-muted;
+    -fx-border-width: 1;
+    -fx-border-radius: 12;
+}
+
+/* Transparent TextArea inside message bubbles */
+.message-text-area {
+    -fx-background-color: transparent;
+    -fx-control-inner-background: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-border-width: 0;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.message-text-area .content,
+.message-text-area .scroll-pane,
+.message-text-area .scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.message-text-area .scroll-pane {
+    -fx-hbar-policy: never;
+    -fx-vbar-policy: never;
+}
+
+.message-user .message-text-area,
+.message-user .message-text-area .text {
+    -fx-text-fill: white;
+    -fx-fill: white;
+}
+
+.message-assistant .message-text-area,
+.message-assistant .message-text-area .text {
+    -fx-text-fill: -color-fg-default;
+    -fx-fill: -color-fg-default;
+}
+
+/* ===== Drop zone icon ===== */
+.drop-zone-icon {
+    -fx-icon-color: -color-fg-muted;
+}
+
+.drop-zone-active .drop-zone-icon {
+    -fx-icon-color: -color-accent-fg;
+}
+
+/* ===== Drop zone ===== */
+.drop-zone {
+    -fx-background-color: -color-bg-inset;
+    -fx-background-radius: 12;
+    -fx-border-color: -color-border-default;
+    -fx-border-width: 2;
+    -fx-border-style: dashed;
+    -fx-border-radius: 12;
+    -fx-min-height: 140;
+}
+
+.drop-zone-active {
+    -fx-border-color: -color-accent-fg;
+    -fx-background-color: -color-accent-subtle;
+}
+
+/* ===== Document items ===== */
+.document-item {
+    -fx-background-color: -color-bg-subtle;
+    -fx-background-radius: 10;
+    -fx-padding: 12;
+    -fx-border-color: -color-border-muted;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+}
+
+.document-item:hover {
+    -fx-background-color: -color-bg-inset;
+}
+
+/* ===== Model items ===== */
+.model-item {
+    -fx-background-color: -color-bg-subtle;
+    -fx-background-radius: 10;
+    -fx-padding: 12;
+    -fx-border-color: -color-border-muted;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+}
+
+/* ===== Settings sections ===== */
+.settings-section {
+    -fx-background-color: -color-bg-subtle;
+    -fx-background-radius: 10;
+    -fx-padding: 14;
+    -fx-border-color: -color-border-muted;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+}
+
+/* ===== Document status colors ===== */
+.document-status-ready    { -fx-text-fill: -color-success-fg; }
+.document-status-processing { -fx-text-fill: -color-warning-fg; }
+.document-status-error    { -fx-text-fill: -color-danger-fg; }
+
+/* ===== Processing / download bar ===== */
+.processing-bar,
+.download-section {
+    -fx-background-color: -color-bg-subtle;
+    -fx-border-color: -color-border-muted;
+    -fx-border-width: 1 0 0 0;
+}
+
+/* ===== Provider items ===== */
+.provider-item {
+    -fx-background-color: -color-bg-inset;
+    -fx-background-radius: 8;
+    -fx-padding: 10;
+    -fx-border-color: -color-border-muted;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+}
+
+/* ===== Chat history sidebar ===== */
+.chat-sidebar {
+    -fx-background-color: -color-bg-inset;
+    -fx-border-color: -color-border-default;
+    -fx-border-width: 0 1 0 0;
+}
+
+.sidebar-header {
+    -fx-background-color: -color-bg-subtle;
+    -fx-border-color: -color-border-muted;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 10 10 10 12;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.sidebar-scroll,
+.sidebar-scroll > .viewport {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.chat-history-item {
+    -fx-background-color: transparent;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.chat-history-item:hover {
+    -fx-background-color: -color-bg-subtle;
+}
+
+.chat-history-item-active {
+    -fx-background-color: -color-accent-subtle;
+}
+
+/* ===== HuggingFace autocomplete popup (native Popup + ListView) ===== */
+.hf-autocomplete-list {
+    -fx-background-color: -color-bg-default;
+    -fx-background-radius: 8;
+    -fx-border-color: -color-border-default;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-padding: 4 0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0, 0, 4);
+}
+
+.hf-autocomplete-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: -color-fg-default;
+    -fx-padding: 7 12;
+    -fx-font-size: 13px;
+}
+
+.hf-autocomplete-list .list-cell:hover {
+    -fx-background-color: -color-bg-subtle;
+}
+
+.hf-autocomplete-list .list-cell:selected,
+.hf-autocomplete-list .list-cell:filled:selected,
+.hf-autocomplete-list .list-cell:filled:selected:hover {
+    -fx-background-color: -color-accent-emphasis;
+    -fx-text-fill: white;
+}
