@@ -92,6 +92,27 @@ src/main/java/com/desktopai/
 
 PDF, DOCX, TXT, Markdown, HTML, RTF (via Apache Tika)
 
+## 🖼️ Screenshots
+
+<div align="center">
+
+### Chat Interface  
+![Chat Interface](./assets/chat.png)
+
+###  Documents Interface
+![Documents](./assets/documents.png)
+
+### Model Manager Interface
+![Model Manager](./assets/model-manager.png)
+
+### Settings & Configuration 
+![Settings](./assets/settings.png)
+
+### Model selection on chat interface
+![Model Selection](./assets/model-selection.png)
+
+</div>
+
 ## License
 
 [MIT](LICENSE)
