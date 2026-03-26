@@ -18,7 +18,6 @@ A cross-platform JavaFX desktop application that lets you chat with local and cl
 | Java (JDK) | 25 |
 | Maven | 3.8+ (or use the included `mvnw` wrapper) |
 
-> No pre-installed JavaFX required — Maven downloads it automatically.
 
 ## Quick Start
 
